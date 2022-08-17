@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一.Clion中创建Qt类的相关模板1.原模板：Qt Class Header.h#parse(“C File Header.h”)#[[#ifndef]]# ${INCLUDE_GUARD}#[[#define]]# ${INCLUDE_GUARD} #[[#include]]# &lt;${PARENT_CLASS}&gt; ${USER_BEGIN_NAMESPACE}QT_BEGIN_NA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt图形库-学习笔记">
+<meta property="og:url" content="http://example.com/2022/08/17/QtNode/index.html">
+<meta property="og:site_name" content="破风的博客">
+<meta property="og:description" content="一.Clion中创建Qt类的相关模板1.原模板：Qt Class Header.h#parse(“C File Header.h”)#[[#ifndef]]# ${INCLUDE_GUARD}#[[#define]]# ${INCLUDE_GUARD} #[[#include]]# &lt;${PARENT_CLASS}&gt; ${USER_BEGIN_NAMESPACE}QT_BEGIN_NA">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-17T15:09:00.000Z">
+<meta property="article:modified_time" content="2022-08-17T15:10:38.735Z">
+<meta property="article:author" content="Jiaqi Song">
+<meta property="article:tag" content="C++,Qt">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/17/QtNode/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Qt图形库-学习笔记 | 破风的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">破风的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/17/QtNode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiaqi Song">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="破风的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Qt图形库-学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-17 23:09:00 / 修改时间：23:10:38" itemprop="dateCreated datePublished" datetime="2022-08-17T23:09:00+08:00">2022-08-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-Clion中创建Qt类的相关模板"><a href="#一-Clion中创建Qt类的相关模板" class="headerlink" title="一.Clion中创建Qt类的相关模板"></a>一.Clion中创建Qt类的相关模板</h1><h2 id="1-原模板："><a href="#1-原模板：" class="headerlink" title="1.原模板："></a>1.原模板：</h2><h3 id="Qt-Class-Header-h"><a href="#Qt-Class-Header-h" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)<br>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
+<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;</p>
+<p>${USER_BEGIN_NAMESPACE}<br>QT_BEGIN_NAMESPACE<br>namespace Ui { class ${NAME}; }<br>QT_END_NAMESPACE</p>
+<p>class ${NAME} : public ${PARENT_CLASS} {<br>Q_OBJECT</p>
+<p>public:<br>    explicit ${NAME}(QWidget *parent &#x3D; nullptr);<br>    ~${NAME}() override;</p>
+<p>private:<br>    Ui::${NAME} *ui;<br>};<br>${USER_END_NAMESPACE}</p>
+<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
+<h3 id="Qt-class-cpp"><a href="#Qt-class-cpp" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)<br>&#x2F;&#x2F; You may need to build the project (run Qt uic code generator) to get “${UI_HEADER_FILENAME}” resolved</p>
+<p>#[[#include]]# “${HEADER_FILENAME}”<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
+<p>${USER_BEGIN_NAMESPACE}<br>${NAME}::${NAME}(QWidget *parent) :<br>    ${PARENT_CLASS}(parent), ui(new Ui::${NAME}) {<br>    ui-&gt;setupUi(this);<br>}</p>
+<p>${NAME}::~${NAME}() {<br>    delete ui;<br>}<br>${USER_END_NAMESPACE}&#96;</p>
+<h2 id="2-自用模板："><a href="#2-自用模板：" class="headerlink" title="2.自用模板："></a>2.自用模板：</h2><h3 id="Qt-Class-Header-h-1"><a href="#Qt-Class-Header-h-1" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)</p>
+<p>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
+<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
+<p>class ${NAME} : public ${PARENT_CLASS} {</p>
+<p>};</p>
+<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
+<h3 id="Qt-class-cpp-1"><a href="#Qt-class-cpp-1" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)</p>
+<p>#[[#include]]# “${HEADER_FILENAME}”</p>
+<h1 id="二-笔记"><a href="#二-笔记" class="headerlink" title="二.笔记"></a>二.笔记</h1><h2 id="1-中文乱码"><a href="#1-中文乱码" class="headerlink" title="1.中文乱码"></a>1.中文乱码</h2><p>1.全部改为utf-8编码，Qt5可以自动将utf-8编码转换为Unicode字符集<br>2.若编码为GBK,则可添加以下代码：<br>&#x2F;&#x2F;通过QTextCodec实现编码转换,创建编码对象<br>    QTextCodec *codec &#x3D; QTextCodec::codecForName(“GBK”);<br>&#x2F;&#x2F;在指定输出的字符前，对其进行转换<br>    QLabel label(codec-&gt;toUnicode(“我是标签”));</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/*代码*/</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QLabel&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line">#include &lt;QTextCodec&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;//arg参数 c命令行变量数量，v[]命令行变量的数组</span><br><span class="line">    //通过QTextCodec实现编码转换,创建编码对象</span><br><span class="line">    QTextCodec *codec = QTextCodec::codecForName(&quot;GBK&quot;);</span><br><span class="line">    //创建Qt应用程序对象</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line">    //创建标签控件（图形对象）</span><br><span class="line">//    QLabel label(&quot;我是标签&quot;);//utf-8</span><br><span class="line">    QLabel label(codec-&gt;toUnicode(&quot;我是标签&quot;));</span><br><span class="line">    label.resize(400, 400);</span><br><span class="line"></span><br><span class="line">//    QPushButton button(&quot;我是按钮&quot;);//utf-8</span><br><span class="line">    QPushButton button(codec-&gt;toUnicode(&quot;我是按钮&quot;));</span><br><span class="line">    button.resize(200, 200);</span><br><span class="line"></span><br><span class="line">button.show();</span><br><span class="line">//显示标签控件</span><br><span class="line">label.show();</span><br><span class="line">//让应用程序进入事件循环</span><br><span class="line">return QApplication::exec();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-父窗口"><a href="#2-父窗口" class="headerlink" title="2.父窗口"></a>2.父窗口</h2><p>1.QWidget 所有用户界面对象的基类<br>2.QMainWindow(QWidget子类) 对话框窗口的基类<br>3.QDialog(QWidget子类) 提供一个有菜单条、工具栏、状态条的主应用程序窗口</p>
+<ul>
+<li>&#96;&#96;&#96;<br>&#x2F;<em>代码</em>&#x2F;<br>#include <QWidget><br>#include <QLabel><br>#include <QPushButton><br>#include <QApplication></QApplication></QPushButton></QLabel></QWidget></li>
+</ul>
+<p>  int main(int argc, char *argv[]) {<br>      QApplication app(argc, argv);<br>      QWidget w;<br>      &#x2F;<em>在栈区创建，编译器会自行销毁</em>&#x2F;<br>      &#x2F;&#x2F;创建标签控件，并停靠在父窗口<br>      QLabel label(“我是标签”, &amp;w);<br>      label.move(20, 40);<br>      label.show();<br>      &#x2F;&#x2F;创建按钮控件，并停靠在父窗口<br>      QPushButton button(“按钮”, &amp;w);<br>      button.move(50, 60);<br>      button.show();<br>      &#x2F;*在堆区创建，不需要且没有合适位置使用delete关键字进行销毁。Qt的父窗口对象销毁时，相关控件会自行销毁，</p>
+<pre><code> * 因此不需要担心内存泄露问题*/
+   //    QPushButton* button1 = new QPushButton(&quot;大按钮&quot;,&amp;w);
+       auto button1 = new QPushButton(&quot;大按钮&quot;, &amp;w);
+       button1-&gt;move(200, 60);
+       button1-&gt;show();
+       w.move(200, 100);
+       w.resize(500, 300);
+       w.show();
+       return QApplication::exec();
+   &#125;
+</code></pre>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">## 3.信号和槽</span><br><span class="line"></span><br><span class="line">### 1.信号定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​        Q_OBJECT</span><br><span class="line">​    signals:</span><br><span class="line">​        void signal_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：信号函数只需写声明，不能写定义</span><br><span class="line"></span><br><span class="line">### 2.槽定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​            Q_OBJECT</span><br><span class="line">​    public slots:</span><br><span class="line">​        void slot_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：</span><br><span class="line">​    a.槽函数可以连接到某个信号上，当信号被发射时，槽函数将被触发和执行</span><br><span class="line">​    b.槽函数也可当作普通的成员函数直接调用</span><br><span class="line"></span><br><span class="line">### 3.信号和槽连接</span><br><span class="line"></span><br><span class="line">QObject::connect(const QObject* sender,const char* signal,</span><br><span class="line">                const QObject* receiver,const char* method);</span><br><span class="line">参数：</span><br><span class="line">    sender：信号发送对象指针</span><br><span class="line">    signal：要发送的信号函数，可以使用“SIGNAL(...)”宏进行类型转换</span><br><span class="line">    receiver：信号的接收对象指针</span><br><span class="line">    method：接收信号后要执行的槽函数，可以使用“SLOT(...)”宏进行类型转换</span><br><span class="line">语法：</span><br><span class="line">1.信号和槽函数参数要一致</span><br><span class="line">2.可带有缺省参数（比如int x=0）</span><br><span class="line">3.信号函数的参数可以多于槽函数</span><br><span class="line">应用：</span><br><span class="line">1.一对多：执行顺序不确定，需要看系统的调度策略</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B1,SLOT(slotfun1(int)));</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B2,SLOT(slotfun2(int)));</span><br><span class="line">2.多对一</span><br><span class="line">    QObject::connect(A1,SIGNAL(signfun1(int)),B,SLOT(slotfun(int)));</span><br><span class="line">    QObject::connect(A2,SIGNAL(signfun2(int)),B,SLOT(slotfun(int)));</span><br><span class="line">3.信号级联（不常用，了解即可）</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B,SLOT(slotfun(int)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;<em>代码</em>&#x2F;<br>a.<br>&#x2F;&#x2F;信号和槽—点击按钮关闭标签<br>    &#x2F;&#x2F;QObject::connect(按钮指针，按钮信号，标签指针，标签信号)，SIGNAL和SLOT可以将字符串转化为const char*<br>    QObject::connect(&amp;button, SIGNAL(clicked()),&amp;label, SLOT(close()));<br>&#x2F;&#x2F;信号和槽—增加一个退出按钮，点击后退出应用程序<br>    QPushButton exit(“退出”,&amp;w);<br>    exit.move(150,60);<br>    exit.show();<br>    QObject::connect(&amp;exit,SIGNAL(clicked()),<br>                    &#x2F;<em>在本程序中有三种方式可供关闭应用程序</em>&#x2F;<br>&#x2F;&#x2F;                     &amp;app, SLOT(closeAllWindows()));<br>                     &amp;app, SLOT(quit()));<br>                    &#x2F;&#x2F;当父窗口被关闭了，其包含的所有控件都会被关闭，同时导致事件循环结束<br>&#x2F;&#x2F;                     &amp;w, SLOT(close()));</p>
+<p>b.通过信号和槽来实现滑块和取值框的同步<br>#include <QWidget><br>#include <QSlider><br>#include <QSpinBox><br>#include <QApplication></QApplication></QSpinBox></QSlider></QWidget></p>
+<p>int main(int argc, char *argv[]) {<br>    QApplication app(argc, argv);<br>    &#x2F;&#x2F;创建父窗口<br>    QWidget parent;<br>    parent.resize(400, 300);<br>    parent.show();<br>    &#x2F;&#x2F;创建水平滑块,水平的：Horizontal，垂直的：Vertical<br>    QSlider slider(Qt::Horizontal, &amp;parent);<br>    slider.move(50, 100);<br>    slider.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    slider.setRange(0, 999);<br>    slider.show();<br>    &#x2F;&#x2F;创建选值框<br>    QSpinBox spinBox(&amp;parent);<br>    spinBox.move(250, 100);<br>    spinBox.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    spinBox.setRange(0, 999);<br>    spinBox.show();<br>    &#x2F;&#x2F;块动值动<br>    QObject::connect(&amp;slider, SIGNAL(valueChanged(int)), &amp;spinBox, SLOT(setValue(int)));<br>    &#x2F;&#x2F;值动块动<br>    QObject::connect(&amp;spinBox, SIGNAL(valueChanged(int)), &amp;slider, SLOT(setValue(int)));<br>    return QApplication::exec();<br>}</p>
+<pre><code>
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C-Qt/" rel="tag"># C++,Qt</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/17/AlgorithmNote/" rel="prev" title="数据结构与算法-学习笔记">
+      <i class="fa fa-chevron-left"></i> 数据结构与算法-学习笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-Clion%E4%B8%AD%E5%88%9B%E5%BB%BAQt%E7%B1%BB%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">一.Clion中创建Qt类的相关模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8E%9F%E6%A8%A1%E6%9D%BF%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1.原模板：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-Class-Header-h"><span class="nav-number">1.1.1.</span> <span class="nav-text">Qt Class Header.h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-class-cpp"><span class="nav-number">1.1.2.</span> <span class="nav-text">Qt class.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%87%AA%E7%94%A8%E6%A8%A1%E6%9D%BF%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">2.自用模板：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-Class-Header-h-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Qt Class Header.h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-class-cpp-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Qt class.cpp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E7%AC%94%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">二.笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">1.中文乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%88%B6%E7%AA%97%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">2.父窗口</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiaqi Song</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaqi Song</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
