@@ -27,18 +27,18 @@
 <meta property="og:site_name" content="破风的博客">
 <meta property="og:description" content="数据结构与算法关于如何使用Clion运行多个main函数？用以下代码取代添加可执行文件代码：add_executable(xxx xxx.cpp&#x2F;h),对于每一个.cpp文件都会生成对应的.exe文件。 123456789#递归遍历所有的cpp文件file (GLOB_RECURSE files *.cpp)#将所有的cpp文件单独生成可执行文件foreach (file $&amp;#123;files">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img.png">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_1.png">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_2.png">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_3.png">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_4.png">
-<meta property="og:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_5.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_1.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_2.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_3.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_4.png">
+<meta property="og:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img_5.png">
 <meta property="article:published_time" content="2022-08-17T14:24:25.000Z">
 <meta property="article:modified_time" content="2022-08-17T14:38:49.690Z">
 <meta property="article:author" content="Jiaqi Song">
 <meta property="article:tag" content="C++,数据结构与算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/posts/AlgorithmNote/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img.png">
+<meta name="twitter:image" content="c:/Users/xkdn.LAPTOP-OR4QOCL6/Desktop/C++/Algorithm/assets/img.png">
 
 <link rel="canonical" href="http://example.com/posts/AlgorithmNote">
 
@@ -216,9 +216,9 @@
 <p>随后minIndex还会变为6，导致排序错误。</p>
 <p>参考数组：<code>int a[] = &#123;1, 3, 6, 8, 10, 5, 2, 9&#125;;</code></p>
 <p>修改前：<code>minIndex = arr[j] &lt; arr[i] ? j : minIndex;</code></p>
-<p><img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img.png"></p>
+<p><img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img.png"></p>
 <p>修改后：<code>minIndex = arr[j] &lt; arr[minIndex] ? j : minIndex;</code></p>
-<p><img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_1.png"></p>
+<p><img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_1.png"></p>
 <h4 id="2-2总结"><a href="#2-2总结" class="headerlink" title="2.2总结"></a>2.2总结</h4><p>**a.**选择排序是不稳定的排序。</p>
 <p>在一趟选择，如果一个元素比当前元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中两个5的相对前后顺序就被破坏了。</p>
 <p>**b.**冒泡排序是稳定的排序。</p>
@@ -236,18 +236,18 @@
 <p>第二趟比较n-2次</p>
 <p>第三趟比较n-3次</p>
 <p>……</p>
-<p>均成等差数列：<img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_2.png"></p>
-<h4 id="2-3异或运算的理解"><a href="#2-3异或运算的理解" class="headerlink" title="2.3异或运算的理解"></a>2.3异或运算的理解</h4><h5 id="2-3-1关于异或"><a href="#2-3-1关于异或" class="headerlink" title="2.3.1关于异或"></a>2.3.1关于异或</h5><p>1.不相同为1，相同为0或无进位相加。<img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_3.png"></p>
+<p>均成等差数列：<img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_2.png"></p>
+<h4 id="2-3异或运算的理解"><a href="#2-3异或运算的理解" class="headerlink" title="2.3异或运算的理解"></a>2.3异或运算的理解</h4><h5 id="2-3-1关于异或"><a href="#2-3-1关于异或" class="headerlink" title="2.3.1关于异或"></a>2.3.1关于异或</h5><p>1.不相同为1，相同为0或无进位相加。<img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_3.png"></p>
 <p>2.性质：</p>
 <p>​	a.0^n&#x3D;n; n^n&#x3D;0;</p>
 <p>​	b.满足交换和结合律。 </p>
 <p>3.为什么通过异或可以交换a,b的值？</p>
 <p><strong>前提：a，b在内存中为独立的内存区域，两者值可以相同，但两种指向的内存区域不能相同。</strong></p>
-<p><img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_4.png"></p>
+<p><img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_4.png"></p>
 <p><strong>内存区域相同的后果：i和j位置不能相等，否则相当于同样的内存区域自己在和自己异或，会变为0。</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> arr[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> j=<span class="number">1</span>;</span><br><span class="line">    cout&lt;&lt;arr[i]&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;arr[j]&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    arr[i]=arr[i]^arr[j];</span><br><span class="line">    arr[j]=arr[i]^arr[j];</span><br><span class="line">    arr[i]=arr[i]^arr[j];</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;arr[i]&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;arr[j]&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/posts/AlgorithmNote/Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_5.png"></p>
+<p><img src="C:\Users\xkdn.LAPTOP-OR4QOCL6\Desktop\C++\Algorithm\assets\img_5.png"></p>
 <h5 id="2-3-2题目：找到出现奇数次的数"><a href="#2-3-2题目：找到出现奇数次的数" class="headerlink" title="2.3.2题目：找到出现奇数次的数"></a>2.3.2题目：找到出现奇数次的数</h5><p>要求：时间O(n),空间O(1)</p>
 <p>情况：</p>
 <p>1.一种数出现奇数次，其他数出现偶数次</p>
