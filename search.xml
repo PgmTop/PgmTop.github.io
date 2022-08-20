@@ -1,61 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Qt图形库-学习笔记</title>
-    <url>/2022/08/17/QtNode/</url>
-    <content><![CDATA[<h1 id="一-Clion中创建Qt类的相关模板"><a href="#一-Clion中创建Qt类的相关模板" class="headerlink" title="一.Clion中创建Qt类的相关模板"></a>一.Clion中创建Qt类的相关模板</h1><h2 id="1-原模板："><a href="#1-原模板：" class="headerlink" title="1.原模板："></a>1.原模板：</h2><h3 id="Qt-Class-Header-h"><a href="#Qt-Class-Header-h" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)<br>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
-<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;</p>
-<p>${USER_BEGIN_NAMESPACE}<br>QT_BEGIN_NAMESPACE<br>namespace Ui { class ${NAME}; }<br>QT_END_NAMESPACE</p>
-<p>class ${NAME} : public ${PARENT_CLASS} {<br>Q_OBJECT</p>
-<p>public:<br>    explicit ${NAME}(QWidget *parent &#x3D; nullptr);<br>    ~${NAME}() override;</p>
-<p>private:<br>    Ui::${NAME} *ui;<br>};<br>${USER_END_NAMESPACE}</p>
-<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
-<h3 id="Qt-class-cpp"><a href="#Qt-class-cpp" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)<br>&#x2F;&#x2F; You may need to build the project (run Qt uic code generator) to get “${UI_HEADER_FILENAME}” resolved</p>
-<p>#[[#include]]# “${HEADER_FILENAME}”<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
-<p>${USER_BEGIN_NAMESPACE}<br>${NAME}::${NAME}(QWidget *parent) :<br>    ${PARENT_CLASS}(parent), ui(new Ui::${NAME}) {<br>    ui-&gt;setupUi(this);<br>}</p>
-<p>${NAME}::~${NAME}() {<br>    delete ui;<br>}<br>${USER_END_NAMESPACE}&#96;</p>
-<h2 id="2-自用模板："><a href="#2-自用模板：" class="headerlink" title="2.自用模板："></a>2.自用模板：</h2><h3 id="Qt-Class-Header-h-1"><a href="#Qt-Class-Header-h-1" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)</p>
-<p>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
-<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
-<p>class ${NAME} : public ${PARENT_CLASS} {</p>
-<p>};</p>
-<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
-<h3 id="Qt-class-cpp-1"><a href="#Qt-class-cpp-1" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)</p>
-<p>#[[#include]]# “${HEADER_FILENAME}”</p>
-<h1 id="二-笔记"><a href="#二-笔记" class="headerlink" title="二.笔记"></a>二.笔记</h1><h2 id="1-中文乱码"><a href="#1-中文乱码" class="headerlink" title="1.中文乱码"></a>1.中文乱码</h2><p>1.全部改为utf-8编码，Qt5可以自动将utf-8编码转换为Unicode字符集<br>2.若编码为GBK,则可添加以下代码：<br>&#x2F;&#x2F;通过QTextCodec实现编码转换,创建编码对象<br>    QTextCodec *codec &#x3D; QTextCodec::codecForName(“GBK”);<br>&#x2F;&#x2F;在指定输出的字符前，对其进行转换<br>    QLabel label(codec-&gt;toUnicode(“我是标签”));</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*代码*/</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QLabel&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line">#include &lt;QTextCodec&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;//arg参数 c命令行变量数量，v[]命令行变量的数组</span><br><span class="line">    //通过QTextCodec实现编码转换,创建编码对象</span><br><span class="line">    QTextCodec *codec = QTextCodec::codecForName(&quot;GBK&quot;);</span><br><span class="line">    //创建Qt应用程序对象</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line">    //创建标签控件（图形对象）</span><br><span class="line">//    QLabel label(&quot;我是标签&quot;);//utf-8</span><br><span class="line">    QLabel label(codec-&gt;toUnicode(&quot;我是标签&quot;));</span><br><span class="line">    label.resize(400, 400);</span><br><span class="line"></span><br><span class="line">//    QPushButton button(&quot;我是按钮&quot;);//utf-8</span><br><span class="line">    QPushButton button(codec-&gt;toUnicode(&quot;我是按钮&quot;));</span><br><span class="line">    button.resize(200, 200);</span><br><span class="line"></span><br><span class="line">button.show();</span><br><span class="line">//显示标签控件</span><br><span class="line">label.show();</span><br><span class="line">//让应用程序进入事件循环</span><br><span class="line">return QApplication::exec();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-父窗口"><a href="#2-父窗口" class="headerlink" title="2.父窗口"></a>2.父窗口</h2><p>1.QWidget 所有用户界面对象的基类<br>2.QMainWindow(QWidget子类) 对话框窗口的基类<br>3.QDialog(QWidget子类) 提供一个有菜单条、工具栏、状态条的主应用程序窗口</p>
-<ul>
-<li>&#96;&#96;&#96;<br>&#x2F;<em>代码</em>&#x2F;<br>#include <QWidget><br>#include <QLabel><br>#include <QPushButton><br>#include <QApplication></QApplication></QPushButton></QLabel></QWidget></li>
-</ul>
-<p>  int main(int argc, char *argv[]) {<br>      QApplication app(argc, argv);<br>      QWidget w;<br>      &#x2F;<em>在栈区创建，编译器会自行销毁</em>&#x2F;<br>      &#x2F;&#x2F;创建标签控件，并停靠在父窗口<br>      QLabel label(“我是标签”, &amp;w);<br>      label.move(20, 40);<br>      label.show();<br>      &#x2F;&#x2F;创建按钮控件，并停靠在父窗口<br>      QPushButton button(“按钮”, &amp;w);<br>      button.move(50, 60);<br>      button.show();<br>      &#x2F;*在堆区创建，不需要且没有合适位置使用delete关键字进行销毁。Qt的父窗口对象销毁时，相关控件会自行销毁，</p>
-<pre><code> * 因此不需要担心内存泄露问题*/
-   //    QPushButton* button1 = new QPushButton(&quot;大按钮&quot;,&amp;w);
-       auto button1 = new QPushButton(&quot;大按钮&quot;, &amp;w);
-       button1-&gt;move(200, 60);
-       button1-&gt;show();
-       w.move(200, 100);
-       w.resize(500, 300);
-       w.show();
-       return QApplication::exec();
-   &#125;
-</code></pre>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">## 3.信号和槽</span><br><span class="line"></span><br><span class="line">### 1.信号定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​        Q_OBJECT</span><br><span class="line">​    signals:</span><br><span class="line">​        void signal_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：信号函数只需写声明，不能写定义</span><br><span class="line"></span><br><span class="line">### 2.槽定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​            Q_OBJECT</span><br><span class="line">​    public slots:</span><br><span class="line">​        void slot_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：</span><br><span class="line">​    a.槽函数可以连接到某个信号上，当信号被发射时，槽函数将被触发和执行</span><br><span class="line">​    b.槽函数也可当作普通的成员函数直接调用</span><br><span class="line"></span><br><span class="line">### 3.信号和槽连接</span><br><span class="line"></span><br><span class="line">QObject::connect(const QObject* sender,const char* signal,</span><br><span class="line">                const QObject* receiver,const char* method);</span><br><span class="line">参数：</span><br><span class="line">    sender：信号发送对象指针</span><br><span class="line">    signal：要发送的信号函数，可以使用“SIGNAL(...)”宏进行类型转换</span><br><span class="line">    receiver：信号的接收对象指针</span><br><span class="line">    method：接收信号后要执行的槽函数，可以使用“SLOT(...)”宏进行类型转换</span><br><span class="line">语法：</span><br><span class="line">1.信号和槽函数参数要一致</span><br><span class="line">2.可带有缺省参数（比如int x=0）</span><br><span class="line">3.信号函数的参数可以多于槽函数</span><br><span class="line">应用：</span><br><span class="line">1.一对多：执行顺序不确定，需要看系统的调度策略</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B1,SLOT(slotfun1(int)));</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B2,SLOT(slotfun2(int)));</span><br><span class="line">2.多对一</span><br><span class="line">    QObject::connect(A1,SIGNAL(signfun1(int)),B,SLOT(slotfun(int)));</span><br><span class="line">    QObject::connect(A2,SIGNAL(signfun2(int)),B,SLOT(slotfun(int)));</span><br><span class="line">3.信号级联（不常用，了解即可）</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B,SLOT(slotfun(int)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;<em>代码</em>&#x2F;<br>a.<br>&#x2F;&#x2F;信号和槽—点击按钮关闭标签<br>    &#x2F;&#x2F;QObject::connect(按钮指针，按钮信号，标签指针，标签信号)，SIGNAL和SLOT可以将字符串转化为const char*<br>    QObject::connect(&amp;button, SIGNAL(clicked()),&amp;label, SLOT(close()));<br>&#x2F;&#x2F;信号和槽—增加一个退出按钮，点击后退出应用程序<br>    QPushButton exit(“退出”,&amp;w);<br>    exit.move(150,60);<br>    exit.show();<br>    QObject::connect(&amp;exit,SIGNAL(clicked()),<br>                    &#x2F;<em>在本程序中有三种方式可供关闭应用程序</em>&#x2F;<br>&#x2F;&#x2F;                     &amp;app, SLOT(closeAllWindows()));<br>                     &amp;app, SLOT(quit()));<br>                    &#x2F;&#x2F;当父窗口被关闭了，其包含的所有控件都会被关闭，同时导致事件循环结束<br>&#x2F;&#x2F;                     &amp;w, SLOT(close()));</p>
-<p>b.通过信号和槽来实现滑块和取值框的同步<br>#include <QWidget><br>#include <QSlider><br>#include <QSpinBox><br>#include <QApplication></QApplication></QSpinBox></QSlider></QWidget></p>
-<p>int main(int argc, char *argv[]) {<br>    QApplication app(argc, argv);<br>    &#x2F;&#x2F;创建父窗口<br>    QWidget parent;<br>    parent.resize(400, 300);<br>    parent.show();<br>    &#x2F;&#x2F;创建水平滑块,水平的：Horizontal，垂直的：Vertical<br>    QSlider slider(Qt::Horizontal, &amp;parent);<br>    slider.move(50, 100);<br>    slider.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    slider.setRange(0, 999);<br>    slider.show();<br>    &#x2F;&#x2F;创建选值框<br>    QSpinBox spinBox(&amp;parent);<br>    spinBox.move(250, 100);<br>    spinBox.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    spinBox.setRange(0, 999);<br>    spinBox.show();<br>    &#x2F;&#x2F;块动值动<br>    QObject::connect(&amp;slider, SIGNAL(valueChanged(int)), &amp;spinBox, SLOT(setValue(int)));<br>    &#x2F;&#x2F;值动块动<br>    QObject::connect(&amp;spinBox, SIGNAL(valueChanged(int)), &amp;slider, SLOT(setValue(int)));<br>    return QApplication::exec();<br>}</p>
-<pre><code>
-</code></pre>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>C++,Qt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构与算法-学习笔记</title>
     <url>/2022/08/17/AlgorithmNote/</url>
     <content><![CDATA[<h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><h2 id="关于如何使用Clion运行多个main函数？"><a href="#关于如何使用Clion运行多个main函数？" class="headerlink" title="关于如何使用Clion运行多个main函数？"></a>关于如何使用Clion运行多个main函数？</h2><p>用以下代码取代添加可执行文件代码：<code>add_executable(xxx xxx.cpp/h)</code>,对于每一个.cpp文件都会生成对应的.exe文件。</p>
@@ -154,6 +99,61 @@
       </categories>
       <tags>
         <tag>C++,数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt图形库-学习笔记</title>
+    <url>/2022/08/17/QtNode/</url>
+    <content><![CDATA[<h1 id="一-Clion中创建Qt类的相关模板"><a href="#一-Clion中创建Qt类的相关模板" class="headerlink" title="一.Clion中创建Qt类的相关模板"></a>一.Clion中创建Qt类的相关模板</h1><h2 id="1-原模板："><a href="#1-原模板：" class="headerlink" title="1.原模板："></a>1.原模板：</h2><h3 id="Qt-Class-Header-h"><a href="#Qt-Class-Header-h" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)<br>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
+<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;</p>
+<p>${USER_BEGIN_NAMESPACE}<br>QT_BEGIN_NAMESPACE<br>namespace Ui { class ${NAME}; }<br>QT_END_NAMESPACE</p>
+<p>class ${NAME} : public ${PARENT_CLASS} {<br>Q_OBJECT</p>
+<p>public:<br>    explicit ${NAME}(QWidget *parent &#x3D; nullptr);<br>    ~${NAME}() override;</p>
+<p>private:<br>    Ui::${NAME} *ui;<br>};<br>${USER_END_NAMESPACE}</p>
+<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
+<h3 id="Qt-class-cpp"><a href="#Qt-class-cpp" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)<br>&#x2F;&#x2F; You may need to build the project (run Qt uic code generator) to get “${UI_HEADER_FILENAME}” resolved</p>
+<p>#[[#include]]# “${HEADER_FILENAME}”<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
+<p>${USER_BEGIN_NAMESPACE}<br>${NAME}::${NAME}(QWidget *parent) :<br>    ${PARENT_CLASS}(parent), ui(new Ui::${NAME}) {<br>    ui-&gt;setupUi(this);<br>}</p>
+<p>${NAME}::~${NAME}() {<br>    delete ui;<br>}<br>${USER_END_NAMESPACE}&#96;</p>
+<h2 id="2-自用模板："><a href="#2-自用模板：" class="headerlink" title="2.自用模板："></a>2.自用模板：</h2><h3 id="Qt-Class-Header-h-1"><a href="#Qt-Class-Header-h-1" class="headerlink" title="Qt Class Header.h"></a>Qt Class Header.h</h3><p>#parse(“C File Header.h”)</p>
+<p>#[[#ifndef]]# ${INCLUDE_GUARD}<br>#[[#define]]# ${INCLUDE_GUARD}</p>
+<p>#[[#include]]# &lt;${PARENT_CLASS}&gt;<br>#[[#include]]# “${UI_HEADER_FILENAME}”</p>
+<p>class ${NAME} : public ${PARENT_CLASS} {</p>
+<p>};</p>
+<p>#[[#endif]]# &#x2F;&#x2F;${INCLUDE_GUARD}</p>
+<h3 id="Qt-class-cpp-1"><a href="#Qt-class-cpp-1" class="headerlink" title="Qt class.cpp"></a>Qt class.cpp</h3><p>#parse(“C File Header.h”)</p>
+<p>#[[#include]]# “${HEADER_FILENAME}”</p>
+<h1 id="二-笔记"><a href="#二-笔记" class="headerlink" title="二.笔记"></a>二.笔记</h1><h2 id="1-中文乱码"><a href="#1-中文乱码" class="headerlink" title="1.中文乱码"></a>1.中文乱码</h2><p>1.全部改为utf-8编码，Qt5可以自动将utf-8编码转换为Unicode字符集<br>2.若编码为GBK,则可添加以下代码：<br>&#x2F;&#x2F;通过QTextCodec实现编码转换,创建编码对象<br>    QTextCodec *codec &#x3D; QTextCodec::codecForName(“GBK”);<br>&#x2F;&#x2F;在指定输出的字符前，对其进行转换<br>    QLabel label(codec-&gt;toUnicode(“我是标签”));</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*代码*/</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QLabel&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line">#include &lt;QTextCodec&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;//arg参数 c命令行变量数量，v[]命令行变量的数组</span><br><span class="line">    //通过QTextCodec实现编码转换,创建编码对象</span><br><span class="line">    QTextCodec *codec = QTextCodec::codecForName(&quot;GBK&quot;);</span><br><span class="line">    //创建Qt应用程序对象</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line">    //创建标签控件（图形对象）</span><br><span class="line">//    QLabel label(&quot;我是标签&quot;);//utf-8</span><br><span class="line">    QLabel label(codec-&gt;toUnicode(&quot;我是标签&quot;));</span><br><span class="line">    label.resize(400, 400);</span><br><span class="line"></span><br><span class="line">//    QPushButton button(&quot;我是按钮&quot;);//utf-8</span><br><span class="line">    QPushButton button(codec-&gt;toUnicode(&quot;我是按钮&quot;));</span><br><span class="line">    button.resize(200, 200);</span><br><span class="line"></span><br><span class="line">button.show();</span><br><span class="line">//显示标签控件</span><br><span class="line">label.show();</span><br><span class="line">//让应用程序进入事件循环</span><br><span class="line">return QApplication::exec();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-父窗口"><a href="#2-父窗口" class="headerlink" title="2.父窗口"></a>2.父窗口</h2><p>1.QWidget 所有用户界面对象的基类<br>2.QMainWindow(QWidget子类) 对话框窗口的基类<br>3.QDialog(QWidget子类) 提供一个有菜单条、工具栏、状态条的主应用程序窗口</p>
+<ul>
+<li>&#96;&#96;&#96;<br>&#x2F;<em>代码</em>&#x2F;<br>#include <QWidget><br>#include <QLabel><br>#include <QPushButton><br>#include <QApplication></QApplication></QPushButton></QLabel></QWidget></li>
+</ul>
+<p>  int main(int argc, char *argv[]) {<br>      QApplication app(argc, argv);<br>      QWidget w;<br>      &#x2F;<em>在栈区创建，编译器会自行销毁</em>&#x2F;<br>      &#x2F;&#x2F;创建标签控件，并停靠在父窗口<br>      QLabel label(“我是标签”, &amp;w);<br>      label.move(20, 40);<br>      label.show();<br>      &#x2F;&#x2F;创建按钮控件，并停靠在父窗口<br>      QPushButton button(“按钮”, &amp;w);<br>      button.move(50, 60);<br>      button.show();<br>      &#x2F;*在堆区创建，不需要且没有合适位置使用delete关键字进行销毁。Qt的父窗口对象销毁时，相关控件会自行销毁，</p>
+<pre><code> * 因此不需要担心内存泄露问题*/
+   //    QPushButton* button1 = new QPushButton(&quot;大按钮&quot;,&amp;w);
+       auto button1 = new QPushButton(&quot;大按钮&quot;, &amp;w);
+       button1-&gt;move(200, 60);
+       button1-&gt;show();
+       w.move(200, 100);
+       w.resize(500, 300);
+       w.show();
+       return QApplication::exec();
+   &#125;
+</code></pre>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">## 3.信号和槽</span><br><span class="line"></span><br><span class="line">### 1.信号定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​        Q_OBJECT</span><br><span class="line">​    signals:</span><br><span class="line">​        void signal_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：信号函数只需写声明，不能写定义</span><br><span class="line"></span><br><span class="line">### 2.槽定义</span><br><span class="line"></span><br><span class="line">​    class XX:public QObject&#123;</span><br><span class="line">​            Q_OBJECT</span><br><span class="line">​    public slots:</span><br><span class="line">​        void slot_func(...);//信号函数</span><br><span class="line">​    &#125;;</span><br><span class="line">​    注：</span><br><span class="line">​    a.槽函数可以连接到某个信号上，当信号被发射时，槽函数将被触发和执行</span><br><span class="line">​    b.槽函数也可当作普通的成员函数直接调用</span><br><span class="line"></span><br><span class="line">### 3.信号和槽连接</span><br><span class="line"></span><br><span class="line">QObject::connect(const QObject* sender,const char* signal,</span><br><span class="line">                const QObject* receiver,const char* method);</span><br><span class="line">参数：</span><br><span class="line">    sender：信号发送对象指针</span><br><span class="line">    signal：要发送的信号函数，可以使用“SIGNAL(...)”宏进行类型转换</span><br><span class="line">    receiver：信号的接收对象指针</span><br><span class="line">    method：接收信号后要执行的槽函数，可以使用“SLOT(...)”宏进行类型转换</span><br><span class="line">语法：</span><br><span class="line">1.信号和槽函数参数要一致</span><br><span class="line">2.可带有缺省参数（比如int x=0）</span><br><span class="line">3.信号函数的参数可以多于槽函数</span><br><span class="line">应用：</span><br><span class="line">1.一对多：执行顺序不确定，需要看系统的调度策略</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B1,SLOT(slotfun1(int)));</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B2,SLOT(slotfun2(int)));</span><br><span class="line">2.多对一</span><br><span class="line">    QObject::connect(A1,SIGNAL(signfun1(int)),B,SLOT(slotfun(int)));</span><br><span class="line">    QObject::connect(A2,SIGNAL(signfun2(int)),B,SLOT(slotfun(int)));</span><br><span class="line">3.信号级联（不常用，了解即可）</span><br><span class="line">    QObject::connect(A,SIGNAL(signfun(int)),B,SLOT(slotfun(int)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;<em>代码</em>&#x2F;<br>a.<br>&#x2F;&#x2F;信号和槽—点击按钮关闭标签<br>    &#x2F;&#x2F;QObject::connect(按钮指针，按钮信号，标签指针，标签信号)，SIGNAL和SLOT可以将字符串转化为const char*<br>    QObject::connect(&amp;button, SIGNAL(clicked()),&amp;label, SLOT(close()));<br>&#x2F;&#x2F;信号和槽—增加一个退出按钮，点击后退出应用程序<br>    QPushButton exit(“退出”,&amp;w);<br>    exit.move(150,60);<br>    exit.show();<br>    QObject::connect(&amp;exit,SIGNAL(clicked()),<br>                    &#x2F;<em>在本程序中有三种方式可供关闭应用程序</em>&#x2F;<br>&#x2F;&#x2F;                     &amp;app, SLOT(closeAllWindows()));<br>                     &amp;app, SLOT(quit()));<br>                    &#x2F;&#x2F;当父窗口被关闭了，其包含的所有控件都会被关闭，同时导致事件循环结束<br>&#x2F;&#x2F;                     &amp;w, SLOT(close()));</p>
+<p>b.通过信号和槽来实现滑块和取值框的同步<br>#include <QWidget><br>#include <QSlider><br>#include <QSpinBox><br>#include <QApplication></QApplication></QSpinBox></QSlider></QWidget></p>
+<p>int main(int argc, char *argv[]) {<br>    QApplication app(argc, argv);<br>    &#x2F;&#x2F;创建父窗口<br>    QWidget parent;<br>    parent.resize(400, 300);<br>    parent.show();<br>    &#x2F;&#x2F;创建水平滑块,水平的：Horizontal，垂直的：Vertical<br>    QSlider slider(Qt::Horizontal, &amp;parent);<br>    slider.move(50, 100);<br>    slider.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    slider.setRange(0, 999);<br>    slider.show();<br>    &#x2F;&#x2F;创建选值框<br>    QSpinBox spinBox(&amp;parent);<br>    spinBox.move(250, 100);<br>    spinBox.resize(100, 50);<br>    &#x2F;&#x2F;设置取值范围<br>    spinBox.setRange(0, 999);<br>    spinBox.show();<br>    &#x2F;&#x2F;块动值动<br>    QObject::connect(&amp;slider, SIGNAL(valueChanged(int)), &amp;spinBox, SLOT(setValue(int)));<br>    &#x2F;&#x2F;值动块动<br>    QObject::connect(&amp;spinBox, SIGNAL(valueChanged(int)), &amp;slider, SLOT(setValue(int)));<br>    return QApplication::exec();<br>}</p>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>C++,Qt</tag>
       </tags>
   </entry>
 </search>
