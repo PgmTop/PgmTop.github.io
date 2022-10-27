@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang=zh><head><meta charset=UTF-8><title>网站首页</title><style>
+        body {
+            background-image: url("./image/bg.png");
+            background-size: 100%;
+        }
+
+        .website {
+            font-family: 楷体;
+            margin: 10px 60px;
+        }
+
+        #exit_btn {
+            width: 200px;
+            margin: 20px 10px 10px;
+        }
+
+        #resume_btn {
+            width: 200px;
+            margin: 20px 10px 10px;
+        }
+
+        #feedback_btn {
+            width: 200px;
+            margin: 20px 10px 10px;
+        }
+
+        #imageWall_btn {
+            width: 200px;
+            margin: 20px 10px 10px;
+        }
+
+        #musicPlayer_btn {
+            width: 200px;
+            margin: 20px 10px 10px;
+        }
+    </style><script>
+        function Exit() {
+            window.location.href = './login.html';
+        }
+
+        function Jump_Resume() {
+            window.location.href = './resume.html';
+        }
+
+        function Jump_Image_Wall() {
+            window.location.href = './image_wall.html';
+        }
+
+        function Jump_Feedback() {
+            window.location.href = './feedback.html';
+        }
+
+        function Jump_Music_Player(){
+            window.location.href = './music_player.html';
+        }
+    </script></head><body onkeydown=Esc_KeyDown()><div class=website><h2>网站功能</h2></div><div class=buttons><input value=退出登录 type=button id=exit_btn onclick=Exit()><br><input value=简历 type=button id=resume_btn onclick=Jump_Resume()><br><input value=反馈意见 type=button id=feedback_btn onclick=Jump_Feedback()><br><input value=照片墙 type=button id=imageWall_btn onclick=Jump_Image_Wall()><br><input value=音乐播放器 type=button id=musicPlayer_btn onclick=Jump_Music_Player()></div></body></html>
