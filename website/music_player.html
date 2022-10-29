@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang=zh><head><meta charset=utf-8><title>简单的音乐播放器</title><style>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>简单的音乐播放器</title>
+    <style>
         body {
             background-image: url("./image/bg.png");
             background-size: 100%;
@@ -23,7 +28,47 @@
             outline: 0;
         }
 
-    </style></head><body><input value=返回主页面 type=button id=exit_btn onclick=Exit()><center><h3>简单的音乐播放器</h3></center><hr><audio id=audio src=audio/17.mp3></audio><div id=CDimage><img src=image/CDimage.ico alt=图片加载失败></div><div><label for=volume></label> <input id=volume type=range min=0 max=1 step=0.1 onchange=setVolume()></div><div>当前播放音乐: <span id=title>17</span></div><div><button onclick=previousMusic()><img src=image/previous_music.png width=50 height=50 alt=图片加载失败></button> <button id=toggleBtn onclick=toggleMusic()><img src=image/play_music.png width=50 height=50 alt=图片加载失败></button> <button onclick=nextMusic()><img src=image/next_music.png width=50 height=50 alt=图片加载失败></button></div><script>
+    </style>
+</head>
+
+<body>
+
+    <input value="返回主页面" type="button" id="exit_btn" onclick="Exit()">
+
+<center>
+    <h3>简单的音乐播放器</h3>
+</center>
+<hr/>
+
+<audio id="audio" src="audio/17.mp3" preload></audio>
+
+<div id="CDimage">
+    <img src="image/CDimage.ico" alt="图片加载失败">
+</div>
+
+<!--音量-->
+<div>
+    <label for="volume"></label>
+    <input id="volume" type="range" min="0" max="1" step="0.1" onchange="setVolume()"/>
+</div>
+
+<div>
+    当前播放音乐: <span id="title">17</span>
+</div>
+
+<div>
+    <button onclick="previousMusic()">
+        <img src="image/previous_music.png" width="50" height="50" alt="图片加载失败"/>
+    </button>
+    <button id="toggleBtn" onclick="toggleMusic()">
+        <img src="image/play_music.png" width="50" height="50" alt="图片加载失败"/>
+    </button>
+    <button onclick="nextMusic()">
+        <img src="image/next_music.png" width="50" height="50" alt="图片加载失败"/>
+    </button>
+</div>
+
+<script>
     function Exit() {
         window.location.href = './index.html';
     }
@@ -78,4 +123,6 @@
         music.play();
     }
 
-</script></body></html>
+</script>
+</body>
+</html>
