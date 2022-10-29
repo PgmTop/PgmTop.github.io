@@ -28,59 +28,50 @@ body {
 }
 
 .pic1 {
-    transform: rotate(30deg);
-    top: 90px;
-    left: 600px;
+    margin: 350px 800px;
+    transform: rotate(-20deg);
 }
 
 .pic2 {
-    left: 170px;
-    top: 0;
+    margin: 100px 150px;
     transform: rotate(-20deg);
 }
 
 .pic3 {
-    right: 100px;
-    transform: rotate(-5deg);
+    margin: 350px 1200px;
+    transform: rotate(20deg);
 }
 
 .pic4 {
-    top: 40px;
-    left: 300px;
+    margin: 200px 300px;
     transform: rotate(-10deg);
 }
 
 .pic5 {
-    left: 830px;
-    top: 100px;
-    transform: rotate(20deg);
+    margin: 200px 800px;
+    transform: rotate(10deg);
 }
 
 .pic6 {
-    left: 50px;
+    margin: 200px 30px;
     transform: rotate(10deg);
 }
 
 .pic7 {
-    left: 850px;
-    top: 0px;
-    transform: rotate(20deg);
+    margin: 100px 1000px;
+    /*transform: rotate(20deg);*/
 }
 
 .pic8 {
-    buttom: -20px;
-    top: 100px;
+    margin: 300px 150px;
     transform: rotate(5deg);
 }
 
 .pic9 {
-    left: 550px;
-    top: -10px;
-    transform: rotate(15deg);
+    margin: 450px 1000px;
 }
 
 .pic10 {
-    left: 1100px;
-    top: 150px;
-    transform: rotate(-5deg);
+    margin: 200px 1200px;
+    transform: rotate(-10deg);
 }
